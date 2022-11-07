@@ -38,7 +38,7 @@ K copraMoveIterationOmp(vector<vector<K>*>& vcs, vector<vector<V>*>& vcout, vect
   for (K u=0; u<S; ++u) {
     int t = omp_get_thread_num();
     if (!x.hasVertex(u)) continue;
-    if (!fa(u)) return;
+    if (!fa(u)) continue;
     K d = vcom[u][0].first;
     copraClearScan(*vcs[t], *vcout[t]);
     copraScanCommunities(*vcs[t], *vcout[t], x, u, vcom);
@@ -57,7 +57,7 @@ K copraMoveIterationOmp(vector<vector<K>*>& vcs, vector<vector<V>*>& vcout, vect
 // ---------
 
 template <size_t LABELS=COPRA_MAX_MEMBERSHIP, class G, class K, class FA, class FP>
-CopraResult<K> copraSeq(const G& x, const vector<K>* q, const CopraOptions& o, FA fa, FP fp) {
+CopraResult<K> copraOmp(const G& x, const vector<K>* q, const CopraOptions& o, FA fa, FP fp) {
   using V = typename G::edge_value_type;
   const size_t L = LABELS;
   int l = 0;
