@@ -1,7 +1,7 @@
-# https://www.kaggle.com/wolfram77/puzzlef-copra-communities-seq
+# https://www.kaggle.com/wolfram77/puzzlef-copra-communities-openmp
 import os
 from IPython.display import FileLink
-src="copra-communities-seq"
+src="copra-communities-openmp"
 inp="/kaggle/input/graphs"
 out="{}.txt".format(src)
 !printf "" > "$out"
@@ -14,7 +14,7 @@ display(FileLink(out))
 !echo ""
 
 # Run
-!g++ -std=c++17 -O3 $src/main.cxx
+!g++ -std=c++17 -O3 -fopenmp $src/main.cxx
 !ulimit -s unlimited && stdbuf --output=L ./a.out $inp/web-Stanford.mtx      2>&1 | tee -a "$out"
 !ulimit -s unlimited && stdbuf --output=L ./a.out $inp/web-BerkStan.mtx      2>&1 | tee -a "$out"
 !ulimit -s unlimited && stdbuf --output=L ./a.out $inp/web-Google.mtx        2>&1 | tee -a "$out"

@@ -17,3 +17,4 @@
 #include "random.hxx"
 #include "copra.hxx"
 #include "copraSeq.hxx"
+#include "copraOmp.hxx"

@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdio>
 #include <iostream>
+#include <omp.h>
 #include "src/main.hxx"
 
 using namespace std;
@@ -13,6 +14,10 @@ using namespace std;
 // You can define datatype with -DTYPE=...
 #ifndef TYPE
 #define TYPE float
+#endif
+// You can define number of threads with -DMAX_THREADS=...
+#ifndef MAX_THREADS
+#define MAX_THREADS 12
 #endif
 
 
@@ -82,6 +87,8 @@ int main(int argc, char **argv) {
   auto y = symmetricize(x); print(y); printf(" (symmetricize)\n");
   // auto fl = [](auto u) { return true; };
   // selfLoopU(y, w, fl); print(y); printf(" (selfLoopAllVertices)\n");
+  omp_set_num_threads(MAX_THREADS);
+  printf("OMP_NUM_THREADS=%d\n", MAX_THREADS);
   runExperiment(y, repeat);
   printf("\n");
   return 0;
