@@ -43,34 +43,52 @@ void runExperiment(const G& x, int repeat) {
   for (int i=0, f=10; f<=10000; f*=i&1? 5:2, ++i) {
     float tolerance = 1.0f / f;
     {
-      // Find COPRA using a single thread (1 labels).
+      // Find COPRA using a single thread (1 label).
       auto ak = copraSeqStatic<1>(x, init, {repeat, tolerance});
       printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraSeqStatic {labels=%02d, tolerance=%.0e}\n", ak.time, ak.iterations, getModularity(x, ak, M), 1, tolerance);
+      // Find COPRA using multiple threads (1 label).
+      auto al = copraOmpStatic<1>(x, init, {repeat, tolerance});
+      printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraOmpStatic {labels=%02d, tolerance=%.0e}\n", al.time, al.iterations, getModularity(x, al, M), 1, tolerance);
     }
     {
       // Find COPRA using a single thread (2 labels).
       auto ak = copraSeqStatic<2>(x, init, {repeat, tolerance});
       printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraSeqStatic {labels=%02d, tolerance=%.0e}\n", ak.time, ak.iterations, getModularity(x, ak, M), 2, tolerance);
+      // Find COPRA using multiple threads (2 labels).
+      auto al = copraOmpStatic<2>(x, init, {repeat, tolerance});
+      printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraOmpStatic {labels=%02d, tolerance=%.0e}\n", al.time, al.iterations, getModularity(x, al, M), 2, tolerance);
     }
     {
       // Find COPRA using a single thread (4 labels).
       auto ak = copraSeqStatic<4>(x, init, {repeat, tolerance});
       printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraSeqStatic {labels=%02d, tolerance=%.0e}\n", ak.time, ak.iterations, getModularity(x, ak, M), 4, tolerance);
+      // Find COPRA using multiple threads (4 labels).
+      auto al = copraOmpStatic<4>(x, init, {repeat, tolerance});
+      printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraOmpStatic {labels=%02d, tolerance=%.0e}\n", al.time, al.iterations, getModularity(x, al, M), 4, tolerance);
     }
     {
       // Find COPRA using a single thread (8 labels).
       auto ak = copraSeqStatic<8>(x, init, {repeat, tolerance});
       printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraSeqStatic {labels=%02d, tolerance=%.0e}\n", ak.time, ak.iterations, getModularity(x, ak, M), 8, tolerance);
+      // Find COPRA using multiple threads (8 labels).
+      auto al = copraOmpStatic<8>(x, init, {repeat, tolerance});
+      printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraOmpStatic {labels=%02d, tolerance=%.0e}\n", al.time, al.iterations, getModularity(x, al, M), 8, tolerance);
     }
     {
       // Find COPRA using a single thread (16 labels).
       auto ak = copraSeqStatic<16>(x, init, {repeat, tolerance});
       printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraSeqStatic {labels=%02d, tolerance=%.0e}\n", ak.time, ak.iterations, getModularity(x, ak, M), 16, tolerance);
+      // Find COPRA using multiple threads (16 labels).
+      auto al = copraOmpStatic<16>(x, init, {repeat, tolerance});
+      printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraOmpStatic {labels=%02d, tolerance=%.0e}\n", al.time, al.iterations, getModularity(x, al, M), 16, tolerance);
     }
     {
       // Find COPRA using a single thread (32 labels).
       auto ak = copraSeqStatic<32>(x, init, {repeat, tolerance});
       printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraSeqStatic {labels=%02d, tolerance=%.0e}\n", ak.time, ak.iterations, getModularity(x, ak, M), 32, tolerance);
+      // Find COPRA using multiple threads (32 labels).
+      auto al = copraOmpStatic<32>(x, init, {repeat, tolerance});
+      printf("[%09.3f ms; %04d iters.; %01.9f modularity] copraOmpStatic {labels=%02d, tolerance=%.0e}\n", al.time, al.iterations, getModularity(x, al, M), 32, tolerance);
     }
   }
 }
