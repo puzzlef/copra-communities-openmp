@@ -157,7 +157,7 @@ $ ...
 [![](https://i.imgur.com/7GLy9tb.jpg)](https://www.youtube.com/watch?v=L-ZBWLYGSuY)<br>
 [![ORG](https://img.shields.io/badge/org-puzzlef-green?logo=Org)](https://puzzlef.github.io)
 [![DOI](https://zenodo.org/badge/562704096.svg)](https://zenodo.org/badge/latestdoi/562704096)
-
+![](https://ga-beacon.deno.dev/G-KD28SG54JQ:hbAybl6nQFOtmVxW4if3xw/github.com/puzzlef/copra-communities-openmp)
 
 [gist]: https://gist.github.com/wolfram77/fcc480d4d549c05cb5482f3cf838efdc
 [charts]: https://imgur.com/a/7FQbvW9
